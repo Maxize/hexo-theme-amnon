@@ -14,6 +14,20 @@
 
 ## 如何使用本主题
 
+### 安装插件
+
+```bash
+# 提供给 Google 爬虫抓取的站点地图
+npm install hexo-generator-sitemap --save
+# 提供给百度爬虫抓取的站点地图
+npm install hexo-generator-baidu-sitemap --save
+# 不允许外链
+npm install hexo-autonofollow --save
+# 统计个数
+# 查看这里 https://www.npmjs.com/package/hexo-wordcount
+npm install hexo-wordcount@2 --save
+```
+
 待补充占坑
 
 ## 作品展示

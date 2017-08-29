@@ -7,6 +7,9 @@ menu:
   主页 | Home: /
   归档 | Archives: /archives
   关于 | About: /about
+# 静心阅读: /tags
+# 光影之路: /instagram
+# 随笔: /tags/随笔
 
 # Link to your avatar | 填写头像地址
 avatar: img/head.jpg
@@ -20,10 +23,10 @@ favicon: img/favicon.png
 ## RSS requires a plugin to take effect | 使用 RSS 需先安装对应插件
 ## https://github.com/hexojs/hexo-generator-feed
 subnav:
-  github: "#"
-  zhihu: "#"
-  weibo: "#"
-  google: "#"
+  github: "https://github.com/maxize"
+  zhihu: "https://www.zhihu.com/people/ma-xing-ze"
+  weibo: "http://weibo.com/1878814260/profile?topnav=1&wvr=6&is_all=1"
+  google: "https://plus.google.com/108309905514233834903"
   # twitter: "#"
   # linkedin: "#"
   # mail: "http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=PAkNDgsKBQ4MCnxNTRJfU1E"
@@ -57,11 +60,11 @@ duoshuo:
   # http://<要填的部分>.duoshuo.com (domain只填上<>里的内容，不要填整个网址)
 
 gitment:
-  # on: true
-  owner:
-  repo:
-  client_id:
-  client_secret:
+  on: true
+  owner: Maxize
+  repo: maxize.github.io
+  client_id: 5613b469a87638ba36f5
+  client_secret: cabcaa615c452d2b0adbb909e2a50422ad52f988
 
 youyan:
   #on: true
@@ -172,12 +175,12 @@ baidushare: true
 
 # 百度、谷歌站长验证。填写 HTML 标签 content
 # Site Verification for Google and Baidu. HTML label content.
-google_site:
-baidu_site:
+google_site: DGCmOpnnk2N9A7ga6Q2GhPHE4x3zJHwpI1L2OzCtG1g
+baidu_site: U4KINp5Fzp
 
 # Fill in Google Analytics tracking ID, #e.g. UA-XXXXX-X, or Baidu Analytics hash key
-google_analytics:
-baidu_analytics:
+google_analytics: UA-101964977-1
+baidu_analytics: c170b2dcf076b3362efbc44a5b90c6a3
 
 # 不蒜子网站计数设置
 # http://ibruce.info/2015/04/04/busuanzi/

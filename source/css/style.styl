@@ -46,7 +46,7 @@ body
   color: #999;
   -webkit-overflow-scrolling: touch
 
-::selection 
+::selection
   color: white;
   background:#4094C7;
 
@@ -121,6 +121,9 @@ a {
 @import "_partial/post/youyan"
 @import "_partial/plugins"
 @import "_partial/reward"
+
+if search
+  @import "_partial/search"
 
 if sidebar
   @import "_partial/sidebar"

@@ -12,7 +12,7 @@ define([], function(){
                 $tipBox.addClass("hide");
             },
             init: function(){
-                
+
             }
         }
     })();
@@ -31,11 +31,11 @@ define([], function(){
         // 修复IE10+切换无效的bug
         var $wrap = $(".switch-wrap"),
           transform = [
-              '-webkit-transform: translate(-' + idx * 100 + '%, 0);',
-              '-moz-transform: translate(-' + idx * 100 + '%, 0);',
-              '-o-transform: translate(-' + idx * 100 + '%, 0);',
-              '-ms-transform: translate(-' + idx * 100 + '%, 0);',
-              'transform: translate(-' + idx * 100 + '%, 0);'
+              '-webkit-transform: translate(-'idx * 100'%, 0);',
+              '-moz-transform: translate(-'idx * 100'%, 0);',
+              '-o-transform: translate(-'idx * 100'%, 0);',
+              '-ms-transform: translate(-'idx * 100'%, 0);',
+              'transform: translate(-'idx * 100'%, 0);'
           ];
         //$wrap.css({
         //    "transform": "translate(-"+idx*100+"%, 0 )"
@@ -97,13 +97,53 @@ define([], function(){
         });
     }
 
-    
+    var search = function(){
+        require([yiliaConfig.rootUrl'js/search.js'], function(){
+            var inputArea = document.querySelector("#local-search-input");
+            var $HideWhenSearch = $("#toc, #tocButton, .post-list, #post-nav-button a:nth-child(2)");
+            var $resetButton = $("#search-form .fa-times");
+            var $resultArea = $("#local-search-result");
+            var getSearchFile = function(){
+                var search_path = "search.xml";
+                var path = yiliaConfig.rootUrlsearch_path;
+                searchFunc(path, 'local-search-input', 'local-search-result');
+            }
+            var getFileOnload = inputArea.getAttribute('searchonload');
+            if (yiliaConfig.search && getFileOnload === "true") {
+                getSearchFile();
+            } else {
+                inputArea.onfocus = function(){ getSearchFile() }
+            }
+            var HideTocArea = function(){
+                $HideWhenSearch.css("visibility","hidden");
+                $resetButton.show();
+            }
+            inputArea.oninput = function(){ HideTocArea() }
+            inputArea.onkeydown = function(){ if(event.keyCode==13) return false}
+            resetSearch = function(){
+                $HideWhenSearch.css("visibility","initial");
+                $resultArea.html("");
+                document.querySelector("#search-form").reset();
+                $resetButton.hide();
+                $(".no-result").hide();
+            }
+            $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                if (!$(e.target).text()) {
+                    $(".no-result").show(200);
+                } else {
+                  $(".no-result").hide();
+                }
+            })
+        });
+   }
+
 
     return {
         init: function(){
             resetTags();
             bind();
             Tips.init();
+            search();
         }
     }
 });

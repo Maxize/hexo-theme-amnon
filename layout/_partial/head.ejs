@@ -35,10 +35,10 @@
   <link rel="stylesheet" href="<%- config.root %>font-awesome/css/font-awesome.min.css">
   <link rel="apple-touch-icon" href="<%- config.root %>apple-touch-icon.png">
   <% if (is_home()){ %>
-    <% if (theme.baidu_site) { %> 
+    <% if (theme.baidu_site) { %>
       <meta name="baidu-site-verification" content="<%- theme.baidu_site %>" />
     <% } %>
-    <% if (theme.google_site) { %> 
+    <% if (theme.google_site) { %>
       <meta name="google-site-verification" content="<%- theme.google_site %>" />
     <% } %>
   <% } %>
@@ -58,7 +58,8 @@
           isArchive: <%=is_archive()%>,
           isTag: <%=is_tag()%>,
           isCategory: <%=is_category()%>,
-          open_in_new: <%=theme.open_in_new%>
+          open_in_new: <%=theme.open_in_new%>,
+          search: <%=theme.search.on%>
       }
   </script>
 </head>

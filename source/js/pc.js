@@ -12,7 +12,7 @@ define([], function(){
                 $tipBox.addClass("hide");
             },
             init: function(){
-                
+
             }
         }
     })();
@@ -28,7 +28,7 @@ define([], function(){
     }
 
     var slide = function(idx){
-        // 修复IE10+切换无效的bug
+        // 修复 IE10+ 切换无效的 bug
         var $wrap = $(".switch-wrap"),
           transform = [
               '-webkit-transform: translate(-' + idx * 100 + '%, 0);',
@@ -97,13 +97,52 @@ define([], function(){
         });
     }
 
-    
+    var search = function(){
+        require(
+            [yiliaConfig.rootUrl + 'js/search.js'],
+            function(){
+                var inputArea = document.querySelector("#local-search-input");
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+                var getSearchFile = function() {
+                    var search_path = "search.xml";
+                    var path = yiliaConfig.rootUrl + search_path;
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                var getFileOnload = inputArea.getAttribute('searchonload');
+                if (yiliaConfig.search && getFileOnload === "true") {
+                    getSearchFile();
+                } else {
+                    inputArea.onfocus = function(){
+                        getSearchFile();
+                    }
+                }
+                inputArea.oninput = function(){ $resetButton.show(); }
+                inputArea.onkeydown = function(){ if(event.keyCode==13) return false}
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.oninput = function(){ $resetButton.show(); }
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(200);
+                    } else {
+                      $(".no-result").hide();
+                    }
+                });
+            }
+        );
+    }
 
     return {
         init: function(){
             resetTags();
             bind();
             Tips.init();
+            search();
         }
     }
 });
